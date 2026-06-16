@@ -7,27 +7,38 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* 기본 미니멀 에디토리얼 디자인 */
+        /* 🌸 소프트 블러쉬 핑크 & 핀터레스트 무드 */
         :root {
-            --bg-color: #F5F4F0; 
-            --text-main: #1A1A1A; 
-            --text-sub: #A3A3A3;
-            --line-color: #D6D6D6;
+            --bg-gradient: linear-gradient(135deg, #FFF0F3 0%, #FFE5EC 100%);
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --shadow: 0 10px 40px rgba(255, 182, 193, 0.3);
+            
+            --text-main: #5A464C; /* 따뜻한 다크 브라운/그레이 */
+            --text-sub: #9D8C8F;
+            --accent-color: #FF8E9E; /* 하트, 포인트 컬러 */
+            --line-color: #F0D8DB;
+            --tag-bg: rgba(255, 142, 158, 0.1);
+            
             --font-serif: 'Cormorant Garamond', serif; 
-            --font-sans: 'Inter', sans-serif; 
-            --number-glow: none;
+            --font-sans: 'Poppins', sans-serif; 
         }
 
-        /* 스페셜 데이 */
+        /* 🌟 스페셜 데이 다크 로즈 무드 */
         body.special-day {
-            --bg-color: #1C1B19; 
-            --text-main: #EAE6D7; 
-            --text-sub: #8C887C;
-            --line-color: #3D3B36;
-            --number-glow: 0 0 25px rgba(234, 230, 215, 0.15); 
+            --bg-gradient: linear-gradient(135deg, #2D1E22 0%, #1A1012 100%);
+            --card-bg: rgba(45, 30, 34, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            
+            --text-main: #F4E3E6; 
+            --text-sub: #A38C91;
+            --accent-color: #FFB3C1; 
+            --line-color: #4A3338;
+            --tag-bg: rgba(255, 179, 193, 0.15);
         }
 
         body {
@@ -37,48 +48,72 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow: hidden;
-            transition: background-color 1s ease, color 1s ease; 
+            transition: background 1.5s ease, color 1.5s ease; 
         }
 
-        .container {
-            width: 100%;
-            max-width: 400px;
+        /* 유리 질감 반투명 카드 (Glassmorphism) */
+        .card {
+            width: 85%;
+            max-width: 340px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--card-border);
+            border-radius: 40px;
+            padding: 50px 20px;
             text-align: center;
-            padding: 40px 20px;
+            box-shadow: var(--shadow);
             opacity: 0;
-            animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards;
+            transition: all 1.5s ease;
         }
 
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(15px); }
-            100% { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
         .title {
             font-family: var(--font-sans);
             font-weight: 400;
-            font-size: 0.65rem;
-            letter-spacing: 0.35em;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--text-sub);
-            margin-bottom: 2vh;
-            transition: color 1s ease;
+        }
+
+        /* 통통 튀는 미니 하트 */
+        .heart {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         .d-day-number {
             font-family: var(--font-serif);
-            font-weight: 300;
-            font-size: 8rem;
+            font-weight: 500;
+            font-size: 6.5rem;
             line-height: 1;
-            margin: 0 0 5vh 0;
+            margin: 0 0 30px 0;
             letter-spacing: -0.02em;
-            text-shadow: var(--number-glow);
-            transition: text-shadow 1s ease;
         }
 
         .message-box {
@@ -86,10 +121,10 @@
             font-family: var(--font-serif);
             font-style: italic;
             font-weight: 400;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--text-main);
-            padding-top: 4vh;
-            transition: color 1s ease;
+            padding-top: 30px;
+            margin-bottom: 30px;
         }
 
         .message-box::before {
@@ -98,37 +133,44 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 30px;
+            width: 40px;
             height: 1px;
             background-color: var(--line-color);
             transition: background-color 1s ease;
         }
 
-        /* 다가오는 기념일 D-Day 텍스트 */
-        .upcoming {
+        /* 핀터레스트 스타일 알약 태그 */
+        .upcoming-tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--accent-color);
             font-family: var(--font-sans);
-            font-weight: 300;
             font-size: 0.7rem;
+            font-weight: 500;
             letter-spacing: 0.05em;
-            color: var(--text-sub);
-            margin-top: 6vh;
-            transition: color 1s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 1s ease;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="title" id="top-title">Together</div>
+    <div class="card">
+        <div class="header">
+            <span class="title" id="top-title">Together</span>
+            <span class="heart">❤</span>
+        </div>
+        
         <div class="d-day-number" id="days-count">0</div>
         
         <div class="message-box" id="daily-message"></div>
 
-        <div class="upcoming" id="upcoming-event"></div>
+        <div class="upcoming-tag" id="upcoming-event"></div>
     </div>
 
     <script>
-        // 1. D-Day Calculation (Seoul Timezone 고정)
+        // 1. D-Day Calculation (Seoul Timezone)
         const startDate = new Date("2026-06-14T00:00:00+09:00"); 
         
         const now = new Date();
@@ -141,13 +183,10 @@
 
         document.getElementById("days-count").innerText = daysDiff;
 
-        // 🌟 2. 스페셜 데이 및 다가오는 기념일 계산 🌟
-        
-        // 매년 반복되는 날짜(생일, 크리스마스, 주년) 구하기 함수
+        // 2. Upcoming Events & Special Day Logic
         function getNextAnnualDate(month, day) {
             let currentYear = kstTime.getFullYear();
             let d = new Date(`${currentYear}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
-            // 이미 지난 날짜면 내년으로 설정
             if (d < kstTime) {
                 d = new Date(`${currentYear + 1}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
             }
@@ -155,14 +194,11 @@
         }
 
         let upcomingEvents = [];
-
-        // 연례 행사 등록
         upcomingEvents.push({ name: "my birthday", date: getNextAnnualDate(10, 21) });
         upcomingEvents.push({ name: "his birthday", date: getNextAnnualDate(11, 15) });
         upcomingEvents.push({ name: "christmas", date: getNextAnnualDate(12, 25) });
         upcomingEvents.push({ name: "anniversary", date: getNextAnnualDate(6, 14) });
 
-        // 100일 단위 기념일 등록 (1000일까지)
         const milestoneDays = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
         milestoneDays.forEach(day => {
             if (daysDiff <= day) {
@@ -171,10 +207,8 @@
             }
         });
 
-        // 날짜순 정렬
         upcomingEvents.sort((a, b) => a.date.getTime() - b.date.getTime());
 
-        // 오늘이 특별한 날인지 확인하여 UI 변경
         const todayEvents = upcomingEvents.filter(e => e.date.getTime() === kstTime.getTime());
         if (todayEvents.length > 0) {
             document.body.classList.add('special-day');
@@ -186,15 +220,14 @@
             else document.getElementById("top-title").innerText = "Special Day";
         }
 
-        // 가장 가까운 '다음' 기념일 D-Day 표시
         let futureEvent = upcomingEvents.find(e => e.date.getTime() > kstTime.getTime());
         if (futureEvent) {
             let diffTime = futureEvent.date.getTime() - kstTime.getTime();
             let diffDays = Math.ceil(diffTime / (1000 * 3600 * 24));
-            document.getElementById("upcoming-event").innerText = `next: ${futureEvent.name} (d-${diffDays})`;
+            document.getElementById("upcoming-event").innerText = `next : ${futureEvent.name} (d-${diffDays})`;
         }
 
-        // 3. Random Aesthetic Messages
+        // 3. Random Messages
         const messages = [
             "always you.", "my favorite distraction.", "rent free in my head.", "just us.", "lucky me.",
             "you're kinda my thing.", "pov: you.", "pure serotonin.", "my favorite notification.", "lowkey obsessed.",
