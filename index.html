@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Days</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 미니멀 에디토리얼 디자인 */
+        :root {
+            --bg-color: #F5F4F0; 
+            --text-main: #1A1A1A; 
+            --text-sub: #A3A3A3;
+            --line-color: #D6D6D6;
+            --font-serif: 'Cormorant Garamond', serif; 
+            --font-sans: 'Inter', sans-serif; 
+            --number-glow: none;
+        }
+
+        /* 🌟 스페셜 데이 UI (다크 차콜 & 샴페인 골드 무드) 🌟 */
+        body.special-day {
+            --bg-color: #1C1B19; 
+            --text-main: #EAE6D7; 
+            --text-sub: #8C887C;
+            --line-color: #3D3B36;
+            --number-glow: 0 0 25px rgba(234, 230, 215, 0.15); 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            transition: background-color 1s ease, color 1s ease; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0;
+            animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .title {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            margin-bottom: 2vh;
+            transition: color 1s ease;
+        }
+
+        .d-day-number {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            font-size: 8rem;
+            line-height: 1;
+            margin: 0 0 5vh 0;
+            letter-spacing: -0.02em;
+            text-shadow: var(--number-glow);
+            transition: text-shadow 1s ease;
+        }
+
+        .message-box {
+            position: relative;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            padding-top: 4vh;
+            transition: color 1s ease;
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: var(--line-color);
+            transition: background-color 1s ease;
+        }
+
+        /* 다가오는 기념일 D-Day 텍스트 */
+        .upcoming {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: var(--text-sub);
+            margin-top: 6vh;
+            transition: color 1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title" id="top-title">Together</div>
+        <div class="d-day-number" id="days-count">0</div>
+        
+        <div class="message-box" id="daily-message"></div>
+
+        <div class="upcoming" id="upcoming-event"></div>
+    </div>
+
+    <script>
+        // 1. D-Day Calculation (Seoul Timezone 고정)
+        const startDate = new Date("2026-06-14T00:00:00+09:00"); 
+        
+        const now = new Date();
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const kstTime = new Date(utc + (9 * 60 * 60 * 1000));
+        kstTime.setHours(0,0,0,0);
+
+        const timeDiff = kstTime.getTime() - startDate.getTime();
+        const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1; 
+
+        document.getElementById("days-count").innerText = daysDiff;
+
+        // 🌟 2. 스페셜 데이 및 다가오는 기념일 계산 🌟
+        
+        // 매년 반복되는 날짜(생일, 크리스마스, 주년) 구하기 함수
+        function getNextAnnualDate(month, day) {
+            let currentYear = kstTime.getFullYear();
+            let d = new Date(`${currentYear}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
+            // 이미 지난 날짜면 내년으로 설정
+            if (d < kstTime) {
+                d = new Date(`${currentYear + 1}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
+            }
+            return d;
+        }
+
+        let upcomingEvents = [];
+
+        // 연례 행사 등록
+        upcomingEvents.push({ name: "my birthday", date: getNextAnnualDate(10, 21) });
+        upcomingEvents.push({ name: "his birthday", date: getNextAnnualDate(11, 15) });
+        upcomingEvents.push({ name: "christmas", date: getNextAnnualDate(12, 25) });
+        upcomingEvents.push({ name: "anniversary", date: getNextAnnualDate(6, 14) });
+
+        // 100일 단위 기념일 등록 (1000일까지)
+        const milestoneDays = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+        milestoneDays.forEach(day => {
+            if (daysDiff <= day) {
+                let d = new Date(startDate.getTime() + (day - 1) * 24 * 60 * 60 * 1000);
+                upcomingEvents.push({ name: `${day} days`, date: d });
+            }
+        });
+
+        // 날짜순 정렬
+        upcomingEvents.sort((a, b) => a.date.getTime() - b.date.getTime());
+
+        // 오늘이 특별한 날인지 확인하여 UI 변경
+        const todayEvents = upcomingEvents.filter(e => e.date.getTime() === kstTime.getTime());
+        if (todayEvents.length > 0) {
+            document.body.classList.add('special-day');
+            
+            let todayName = todayEvents[0].name;
+            if (todayName === "anniversary") document.getElementById("top-title").innerText = "Happy Anniversary";
+            else if (todayName === "christmas") document.getElementById("top-title").innerText = "Merry Christmas";
+            else if (todayName.includes("birthday")) document.getElementById("top-title").innerText = "Happy Birthday";
+            else document.getElementById("top-title").innerText = "Special Day";
+        }
+
+        // 가장 가까운 '다음' 기념일 D-Day 표시
+        let futureEvent = upcomingEvents.find(e => e.date.getTime() > kstTime.getTime());
+        if (futureEvent) {
+            let diffTime = futureEvent.date.getTime() - kstTime.getTime();
+            let diffDays = Math.ceil(diffTime / (1000 * 3600 * 24));
+            document.getElementById("upcoming-event").innerText = `next: ${futureEvent.name} (d-${diffDays})`;
+        }
+
+        // 3. Random Aesthetic Messages
+        const messages = [
+            "always you.", "my favorite distraction.", "rent free in my head.", "just us.", "lucky me.",
+            "you're kinda my thing.", "pov: you.", "pure serotonin.", "my favorite notification.", "lowkey obsessed.",
+            "10/10.", "green flag.", "soft spot.", "my safe place.", "matching my energy.",
+            "no context, just you.", "big fan of you.", "top tier.", "unreal.", "my go-to.",
+            "you win.", "better together.", "24/7.", "favorite person.", "you > anything.",
+            "comfort zone.", "my standard.", "stuck with me.", "exactly what i needed.", "makes sense.",
+            "definitely you.", "right on time.", "magnetic.", "nothing but you.", "you make it easy.",
+            "worth it.", "highlight of my day.", "can't get enough.", "peace of mind.", "my favorite habit.",
+            "only you.", "simply the best.", "right where i belong.", "everything and more.", "couldn't ask for better.",
+            "main character energy.", "living in my mind.", "always.", "just my type.", "mine."
+        ];
+
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        document.getElementById("daily-message").innerText = messages[randomIndex];
+    </script>
+
+</body>
+</html>
