@@ -10,20 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* 🎀 평소 무드: 소프트 블러쉬 & 우아한 딥 로즈 포인트 */
+        /* 평소 무드: 소프트 블러쉬 & 딥 로즈 포인트 */
         :root {
             --bg-gradient: linear-gradient(135deg, #F8EDEF 0%, #EFE1E4 100%);
             
-            /* 진짜 유리 같은 질감을 위한 그라데이션 반투명 배경 */
-            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+            /* 한층 더 리얼해진 유리 질감 반투명 배경 */
+            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.15) 100%);
             --card-border-top: rgba(255, 255, 255, 0.9);
             --card-border-left: rgba(255, 255, 255, 0.6);
-            --shadow: 0 25px 45px rgba(170, 130, 140, 0.2);
+            /* 외부 그림자와 내부 빛 반사 효과 추가 */
+            --shadow: 0 30px 50px rgba(170, 130, 140, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.5);
             
             --text-main: #4A3B3C; 
             --text-sub: #9E8489; 
             
-            /* 🥀 포인트 컬러: 너무 쨍하지 않고 우아한 딥 로즈(와인빛 핑크) */
+            /* 포인트 컬러: 딥 로즈 */
             --accent-color: #B85C6A; 
             --accent-light: #D6949E;
             
@@ -31,13 +32,13 @@
             --font-sans: 'Poppins', sans-serif; 
         }
 
-        /* 🍷 스페셜 데이 무드: 다크 로즈 */
+        /* 스페셜 데이 무드: 다크 로즈 */
         body.special-day {
             --bg-gradient: linear-gradient(135deg, #2A1C1F 0%, #1A1214 100%);
-            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
-            --card-border-top: rgba(255, 255, 255, 0.15);
-            --card-border-left: rgba(255, 255, 255, 0.05);
-            --shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --card-border-top: rgba(255, 255, 255, 0.2);
+            --card-border-left: rgba(255, 255, 255, 0.1);
+            --shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             
             --text-main: #FDF5F5; 
             --text-sub: #B5959A;
@@ -60,20 +61,19 @@
             transition: background 1.5s ease-in-out, color 1.5s ease-in-out; 
         }
 
-        /* ✨ 완벽한 반응형 유리 질감 카드 */
+        /* 반응형 유리 질감 카드 */
         .card {
             width: 88%;
             max-width: 340px;
             box-sizing: border-box;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-top: 1px solid var(--card-border-top);
             border-left: 1px solid var(--card-border-left);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px;
-            padding: 50px 30px;
+            border-radius: 35px;
+            padding: 55px 30px;
             text-align: center;
             box-shadow: var(--shadow);
             opacity: 0;
@@ -87,7 +87,7 @@
         }
 
         .header {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -105,7 +105,7 @@
 
         /* 포인트 하트 이모지 */
         .heart-icon {
-            color: var(--accent-color);
+            color: var(--accent-light);
             font-size: 0.8rem;
         }
 
@@ -114,13 +114,14 @@
             font-family: var(--font-serif);
             font-weight: 400;
             font-size: 7.5rem;
-            line-height: 1.1; /* 상하 간격 안정화 */
+            line-height: 1; 
             margin: 0;
             letter-spacing: -0.02em;
             color: var(--accent-color);
             transition: font-size 0.3s ease;
         }
 
+        /* 사귄 날짜 간격 늘림 */
         .since-date {
             font-family: var(--font-sans);
             font-weight: 300;
@@ -128,19 +129,19 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--text-sub);
-            margin-top: 5px;
-            margin-bottom: 35px;
+            margin-top: 18px; /* 디데이 숫자와의 간격 추가 */
+            margin-bottom: 40px;
         }
 
         /* 고급스러운 장식 기호 (구분선 대체) */
         .separator {
             font-size: 1.2rem;
             color: var(--accent-color);
-            margin-bottom: 35px;
-            opacity: 0.6;
+            margin-bottom: 40px;
+            opacity: 0.7;
         }
 
-        /* 🎵 가사 텍스트 (단어 단위 줄바꿈 & 여백 최적화) */
+        /* 🎵 가사 텍스트 (줄바꿈 및 양쪽 밸런스 보정) */
         .message-box {
             font-family: var(--font-serif);
             font-style: italic;
@@ -148,17 +149,18 @@
             font-size: 1.25rem;
             color: var(--text-main);
             line-height: 1.6;
-            margin: 0 auto 40px;
-            max-width: 95%; 
-            word-break: keep-all; /* 단어 중간에 끊기지 않도록 설정 */
-            overflow-wrap: break-word;
+            margin: 0 auto 45px;
+            width: 100%;
+            max-width: 250px; /* 글씨가 옆으로 너무 퍼지지 않게 제한 */
+            text-wrap: balance; /* 글씨를 중앙 기준으로 예쁘게 줄바꿈하는 마법의 CSS */
+            word-break: keep-all; 
             transition: font-size 0.3s ease;
         }
 
-        /* 🗓️ 새로운 가시성 최적화 다음 기념일 박스 */
+        /* 새로운 가시성 최적화 다음 기념일 박스 */
         .upcoming-container {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 20px;
             padding: 18px 20px;
             display: flex;
@@ -213,12 +215,12 @@
             font-weight: 300;
         }
 
-        /* 📱 반응형 최적화 (글씨 안 겹치도록 세밀 조정) */
+        /* 반응형 최적화 */
         @media (max-width: 480px) {
             .card { width: 85%; padding: 45px 25px; }
-            .d-day-number { font-size: 6rem; }
+            .d-day-number { font-size: 6.5rem; }
             .message-box { font-size: 1.15rem; margin-bottom: 35px; }
-            .up-name { font-size: 0.9rem; }
+            .up-name { font-size: 0.95rem; }
             .up-dday { font-size: 0.7rem; padding: 4px 10px; }
         }
 
@@ -248,7 +250,7 @@
     </div>
 
     <script>
-        // 1. D-Day Calculation (한국 시간 자정 기준 완벽 고정)
+        // 1. D-Day Calculation
         const kstFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }); 
         const todayKstStr = kstFormatter.format(new Date()); 
         const kstToday = new Date(`${todayKstStr}T00:00:00`); 
@@ -277,7 +279,6 @@
         upcomingEvents.push({ name: "Christmas", date: getNextAnnualDate(12, 25) });
         upcomingEvents.push({ name: "Anniversary", date: getNextAnnualDate(6, 14) });
 
-        // 100일부터 10000일 자동 계산
         for (let day = 100; day <= 10000; day += 100) {
             if (daysDiff <= day) {
                 let d = new Date(kstStart.getTime() + (day - 1) * 24 * 60 * 60 * 1000);
@@ -307,7 +308,6 @@
             let eventMonth = String(futureEvent.date.getMonth() + 1).padStart(2, '0');
             let eventDay = String(futureEvent.date.getDate()).padStart(2, '0');
             
-            // 새롭게 디자인된 HTML 구조로 주입
             document.getElementById("upcoming-event").innerHTML = `
                 <div class="upcoming-container">
                     <div class="up-label">Next Event</div>
@@ -320,7 +320,7 @@
             `;
         }
 
-        // 3. 100 Pop Song Lyrics (Romantic & Aesthetic)
+        // 3. 100 Pop Song Lyrics
         const lyrics = [
             "You are the best thing, that's ever been mine.",
             "Can I go where you go? Can we always be this close?",
@@ -414,7 +414,7 @@
             "You're the piece of me that makes me whole.",
             "I just called to say I love you.",
             "I want to hold your hand.",
-            "I love you like a love song.",
+            "I love you like a love song, baby.",
             "There's no one else I'd rather be with.",
             "You've got the love I need to see me through.",
             "You are the apple of my eye.",
