@@ -7,38 +7,40 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* 🌸 소프트 블러쉬 핑크 & 핀터레스트 무드 */
+        /* 평소 무드: 소프트 블러쉬 & 더스티 로즈 */
         :root {
-            --bg-gradient: linear-gradient(135deg, #FFF0F3 0%, #FFE5EC 100%);
+            --bg-gradient: linear-gradient(135deg, #FDF7F8 0%, #F3E6E8 100%);
             --card-bg: rgba(255, 255, 255, 0.65);
             --card-border: rgba(255, 255, 255, 0.8);
-            --shadow: 0 10px 40px rgba(255, 182, 193, 0.3);
+            --shadow: 0 20px 40px rgba(186, 150, 155, 0.15);
             
-            --text-main: #5A464C; /* 따뜻한 다크 브라운/그레이 */
-            --text-sub: #9D8C8F;
-            --accent-color: #FF8E9E; /* 하트, 포인트 컬러 */
-            --line-color: #F0D8DB;
-            --tag-bg: rgba(255, 142, 158, 0.1);
+            --text-main: #4A3B3C; 
+            --text-sub: #9E8489; 
+            --text-accent: #7A6366;
+            
+            --line-color: #EBDCE0;
+            --tag-bg: transparent;
             
             --font-serif: 'Cormorant Garamond', serif; 
             --font-sans: 'Poppins', sans-serif; 
         }
 
-        /* 🌟 스페셜 데이 다크 로즈 무드 */
+        /* 기념일 무드: 딥 와인 & 다크 로즈 */
         body.special-day {
-            --bg-gradient: linear-gradient(135deg, #2D1E22 0%, #1A1012 100%);
-            --card-bg: rgba(45, 30, 34, 0.6);
-            --card-border: rgba(255, 255, 255, 0.05);
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --bg-gradient: linear-gradient(135deg, #2A1C1F 0%, #1A1214 100%);
+            --card-bg: rgba(42, 28, 31, 0.4);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             
-            --text-main: #F4E3E6; 
-            --text-sub: #A38C91;
-            --accent-color: #FFB3C1; 
-            --line-color: #4A3338;
-            --tag-bg: rgba(255, 179, 193, 0.15);
+            --text-main: #FDF5F5; 
+            --text-sub: #B5959A;
+            --text-accent: #D4BFC3;
+            
+            --line-color: #4A3237;
+            --tag-bg: transparent;
         }
 
         body {
@@ -52,24 +54,24 @@
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
             overflow: hidden;
-            transition: background 1.5s ease, color 1.5s ease; 
+            transition: background 1.5s ease-in-out, color 1.5s ease-in-out; 
         }
 
-        /* 유리 질감 반투명 카드 (Glassmorphism) */
+        /* 반투명 유리 질감 카드 */
         .card {
             width: 85%;
-            max-width: 340px;
+            max-width: 320px;
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--card-border);
-            border-radius: 40px;
-            padding: 50px 20px;
+            border-radius: 28px;
+            padding: 55px 30px;
             text-align: center;
             box-shadow: var(--shadow);
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease forwards;
+            transform: translateY(15px);
+            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transition: all 1.5s ease;
         }
 
@@ -78,79 +80,86 @@
         }
 
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .title {
             font-family: var(--font-sans);
             font-weight: 400;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
             color: var(--text-sub);
-        }
-
-        /* 통통 튀는 미니 하트 */
-        .heart {
-            color: var(--accent-color);
-            font-size: 0.8rem;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            transition: color 1.5s ease;
         }
 
         .d-day-number {
             font-family: var(--font-serif);
-            font-weight: 500;
-            font-size: 6.5rem;
+            font-weight: 300;
+            font-size: 7.5rem;
             line-height: 1;
-            margin: 0 0 30px 0;
+            margin: 0 0 5px 0;
             letter-spacing: -0.02em;
+            transition: font-size 0.3s ease;
+        }
+
+        .since-date {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            margin-bottom: 35px;
+        }
+
+        .separator {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--line-color);
+            margin-bottom: 35px;
+            letter-spacing: 0.3em;
+            transition: color 1.5s ease;
         }
 
         .message-box {
-            position: relative;
             font-family: var(--font-serif);
             font-style: italic;
             font-weight: 400;
-            font-size: 1.3rem;
-            color: var(--text-main);
-            padding-top: 30px;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: var(--text-accent);
+            line-height: 1.5;
+            margin-bottom: 45px;
+            padding: 0 10px;
+            word-break: keep-all;
+            transition: font-size 0.3s ease, color 1.5s ease;
         }
 
-        .message-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 1px;
-            background-color: var(--line-color);
-            transition: background-color 1s ease;
-        }
-
-        /* 핀터레스트 스타일 알약 태그 */
         .upcoming-tag {
             display: inline-block;
+            border: 1px solid var(--line-color);
             background: var(--tag-bg);
-            color: var(--accent-color);
+            color: var(--text-sub);
             font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 1s ease;
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 1.5s ease;
+        }
+
+        @media (max-width: 480px) {
+            .card { width: 80%; padding: 45px 25px; }
+            .d-day-number { font-size: 6rem; }
+            .since-date { margin-bottom: 30px; }
+            .message-box { font-size: 1.1rem; margin-bottom: 35px; }
+            .upcoming-tag { font-size: 0.6rem; padding: 7px 18px; }
+        }
+
+        @media (max-width: 360px) {
+            .d-day-number { font-size: 5rem; }
+            .message-box { font-size: 1rem; }
         }
     </style>
 </head>
@@ -158,91 +167,191 @@
 
     <div class="card">
         <div class="header">
-            <span class="title" id="top-title">Together</span>
-            <span class="heart">❤</span>
+            <span class="title" id="top-title">Our Days</span>
         </div>
         
         <div class="d-day-number" id="days-count">0</div>
+        <div class="since-date">since 26.06.14</div>
         
+        <div class="separator">✦ ✦ ✦</div>
+
         <div class="message-box" id="daily-message"></div>
 
         <div class="upcoming-tag" id="upcoming-event"></div>
     </div>
 
     <script>
-        // 1. D-Day Calculation (Seoul Timezone)
-        const startDate = new Date("2026-06-14T00:00:00+09:00"); 
-        
-        const now = new Date();
-        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const kstTime = new Date(utc + (9 * 60 * 60 * 1000));
-        kstTime.setHours(0,0,0,0);
+        // 1. D-Day Calculation (해외 접속 시에도 완벽하게 한국 자정 기준으로 고정)
+        const kstFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }); 
+        const todayKstStr = kstFormatter.format(new Date()); // YYYY-MM-DD 형식 추출
+        const kstToday = new Date(`${todayKstStr}T00:00:00`); // 한국 시간 기준 오늘 자정
 
-        const timeDiff = kstTime.getTime() - startDate.getTime();
+        const kstStart = new Date("2026-06-14T00:00:00"); // 시작일 자정
+        
+        const timeDiff = kstToday.getTime() - kstStart.getTime();
         const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1; 
 
         document.getElementById("days-count").innerText = daysDiff;
 
         // 2. Upcoming Events & Special Day Logic
         function getNextAnnualDate(month, day) {
-            let currentYear = kstTime.getFullYear();
-            let d = new Date(`${currentYear}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
-            if (d < kstTime) {
-                d = new Date(`${currentYear + 1}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+09:00`);
+            let currentYear = kstToday.getFullYear();
+            let targetDate = new Date(`${currentYear}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00`);
+            
+            if (targetDate < kstToday) {
+                targetDate = new Date(`${currentYear + 1}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00`);
             }
-            return d;
+            return targetDate;
         }
 
         let upcomingEvents = [];
-        upcomingEvents.push({ name: "my birthday", date: getNextAnnualDate(10, 21) });
-        upcomingEvents.push({ name: "his birthday", date: getNextAnnualDate(11, 15) });
-        upcomingEvents.push({ name: "christmas", date: getNextAnnualDate(12, 25) });
-        upcomingEvents.push({ name: "anniversary", date: getNextAnnualDate(6, 14) });
+        upcomingEvents.push({ name: "GF birthday", date: getNextAnnualDate(10, 21) });
+        upcomingEvents.push({ name: "BF birthday", date: getNextAnnualDate(11, 15) });
+        upcomingEvents.push({ name: "Christmas", date: getNextAnnualDate(12, 25) });
+        upcomingEvents.push({ name: "Anniversary", date: getNextAnnualDate(6, 14) });
 
-        const milestoneDays = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-        milestoneDays.forEach(day => {
+        // 100일부터 10000일(약 27년)까지 100일 단위로 자동 계산
+        for (let day = 100; day <= 10000; day += 100) {
             if (daysDiff <= day) {
-                let d = new Date(startDate.getTime() + (day - 1) * 24 * 60 * 60 * 1000);
+                let d = new Date(kstStart.getTime() + (day - 1) * 24 * 60 * 60 * 1000);
                 upcomingEvents.push({ name: `${day} days`, date: d });
             }
-        });
+        }
 
         upcomingEvents.sort((a, b) => a.date.getTime() - b.date.getTime());
 
-        const todayEvents = upcomingEvents.filter(e => e.date.getTime() === kstTime.getTime());
+        // 오늘이 특별한 날인지 확인
+        const todayEvents = upcomingEvents.filter(e => e.date.getTime() === kstToday.getTime());
         if (todayEvents.length > 0) {
             document.body.classList.add('special-day');
             
-            let todayName = todayEvents[0].name;
+            let todayName = todayEvents[0].name.toLowerCase();
             if (todayName === "anniversary") document.getElementById("top-title").innerText = "Happy Anniversary";
             else if (todayName === "christmas") document.getElementById("top-title").innerText = "Merry Christmas";
             else if (todayName.includes("birthday")) document.getElementById("top-title").innerText = "Happy Birthday";
+            else if (todayName.includes("days")) document.getElementById("top-title").innerText = `Happy ${todayEvents[0].name}`;
             else document.getElementById("top-title").innerText = "Special Day";
         }
 
-        let futureEvent = upcomingEvents.find(e => e.date.getTime() > kstTime.getTime());
+        // 다가오는 다음 기념일 표시
+        let futureEvent = upcomingEvents.find(e => e.date.getTime() > kstToday.getTime());
         if (futureEvent) {
-            let diffTime = futureEvent.date.getTime() - kstTime.getTime();
+            let diffTime = futureEvent.date.getTime() - kstToday.getTime();
             let diffDays = Math.ceil(diffTime / (1000 * 3600 * 24));
-            document.getElementById("upcoming-event").innerText = `next : ${futureEvent.name} (d-${diffDays})`;
+            
+            let eventMonth = String(futureEvent.date.getMonth() + 1).padStart(2, '0');
+            let eventDay = String(futureEvent.date.getDate()).padStart(2, '0');
+            
+            document.getElementById("upcoming-event").innerText = `next : ${eventMonth}.${eventDay} ${futureEvent.name} (d-${diffDays})`;
         }
 
-        // 3. Random Messages
-        const messages = [
-            "always you.", "my favorite distraction.", "rent free in my head.", "just us.", "lucky me.",
-            "you're kinda my thing.", "pov: you.", "pure serotonin.", "my favorite notification.", "lowkey obsessed.",
-            "10/10.", "green flag.", "soft spot.", "my safe place.", "matching my energy.",
-            "no context, just you.", "big fan of you.", "top tier.", "unreal.", "my go-to.",
-            "you win.", "better together.", "24/7.", "favorite person.", "you > anything.",
-            "comfort zone.", "my standard.", "stuck with me.", "exactly what i needed.", "makes sense.",
-            "definitely you.", "right on time.", "magnetic.", "nothing but you.", "you make it easy.",
-            "worth it.", "highlight of my day.", "can't get enough.", "peace of mind.", "my favorite habit.",
-            "only you.", "simply the best.", "right where i belong.", "everything and more.", "couldn't ask for better.",
-            "main character energy.", "living in my mind.", "always.", "just my type.", "mine."
+        // 3. 100 Pop Song Lyrics (Romantic & Aesthetic)
+        const lyrics = [
+            "You are the best thing, that's ever been mine.",
+            "Can I go where you go? Can we always be this close?",
+            "I've loved you for a thousand years.",
+            "You're my golden hour, the color of my sky.",
+            "I'd spend ten thousand hours and ten thousand more.",
+            "You are the only exception.",
+            "All of me loves all of you.",
+            "How long will I love you? As long as stars are above you.",
+            "Everything means nothing if I ain't got you.",
+            "I found a love for me.",
+            "Just let me adore you like it's the only thing I'll ever do.",
+            "I like me better when I'm with you.",
+            "You're the one that I want at the end of the day.",
+            "I'm in love with you and all these little things.",
+            "Look at the stars, look how they shine for you.",
+            "I'm so into you, I can barely breathe.",
+            "I don't wanna look at anything else now that I saw you.",
+            "You're amazing, just the way you are.",
+            "I'm lucky I'm in love with my best friend.",
+            "I fall in love with you every single day.",
+            "You're a sky full of stars.",
+            "I'll never finish falling in love with you.",
+            "Loving you is easy.",
+            "You're the coffee that I need in the morning.",
+            "I'd rather be nothing without you than something with somebody else.",
+            "My heart's been borrowed and yours has been blue.",
+            "You bring me out of the dark.",
+            "You're the only thing I know like the back of my hand.",
+            "I cross my heart and promise to give all I've got to give.",
+            "I will always love you.",
+            "If I ain't got you, I got nothing.",
+            "I just wanna see how beautiful you are.",
+            "There's nothing that I wouldn't do to make you feel my love.",
+            "Your love is a wild blue yonder.",
+            "I wanna love you in every kind of way.",
+            "I knew I loved you before I met you.",
+            "You're my end and my beginning.",
+            "I'd give you all of me.",
+            "Even when I lose I'm winning with you.",
+            "You are the reason I am still hanging on.",
+            "I am thinking of you in my sleepless solitude tonight.",
+            "You're still the one that I love.",
+            "I could hold you for a million years.",
+            "We found love right where we are.",
+            "Nothing could ever change this love I have for you.",
+            "You make me feel like a teenager in love.",
+            "I never thought that I'd find a love so true.",
+            "You are my sunrise on the darkest day.",
+            "I want to stay with you until we're grey and old.",
+            "Say you won't let go.",
+            "You're my water when I'm stuck in the desert.",
+            "I love you more than words can say.",
+            "Take my hand, take my whole life too.",
+            "I can't help falling in love with you.",
+            "Home is wherever I'm with you.",
+            "I don't need the world, I just need you.",
+            "You are the only one my heart belongs to.",
+            "You are the light that's leading me to the place.",
+            "Every little thing you do is magic.",
+            "I wanna be the one you call.",
+            "I'd walk through fire for you.",
+            "You got my heart, don't know how you did it.",
+            "I love you perfectly, you make me whole.",
+            "We're just falling in love all over again.",
+            "You're my favorite song I wanna sing forever.",
+            "When you smile, the whole world stops and stares for a while.",
+            "I see my whole future in your eyes.",
+            "I want you, all of you, forever.",
+            "I love the way you love me.",
+            "I will love you till the end of time.",
+            "You're the only thing that's making sense.",
+            "I wanna be with you everywhere.",
+            "You make my heart skip a beat.",
+            "You are the best thing I never knew I needed.",
+            "You're my sunshine in the rain.",
+            "I just want to be yours.",
+            "I wanna be yours.",
+            "I belong with you, you belong with me.",
+            "You're my sweetheart.",
+            "You make it better, just by being here.",
+            "You're everything I ever wanted.",
+            "I fall for you more and more every day.",
+            "You're the answer to every prayer I've offered.",
+            "I have and I always will love you.",
+            "I'll be loving you forever.",
+            "You are my always and forever.",
+            "With you, I'm comfortable.",
+            "I love you unconditionally.",
+            "You're my dream come true.",
+            "You're the piece of me that makes me whole.",
+            "I just called to say I love you.",
+            "I want to hold your hand.",
+            "I love you like a love song, baby.",
+            "There's no one else I'd rather be with.",
+            "You've got the love I need to see me through.",
+            "You are the apple of my eye.",
+            "I'll love you till the sky falls down.",
+            "I could die a happy man with you.",
+            "You're the reason I believe in love.",
+            "It's always been you."
         ];
 
-        const randomIndex = Math.floor(Math.random() * messages.length);
-        document.getElementById("daily-message").innerText = messages[randomIndex];
+        // 하루에 한 번씩만 가사가 순환되도록 (디데이 기준)
+        const dayIndex = daysDiff % lyrics.length;
+        document.getElementById("daily-message").innerText = `"${lyrics[dayIndex]}"`;
     </script>
 
 </body>
