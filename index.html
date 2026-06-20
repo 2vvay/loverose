@@ -10,21 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* 평소 무드: 소프트 블러쉬 & 딥 로즈 포인트 */
+        /* 🎀 평소 무드: 소프트 블러쉬 & 우아한 딥 로즈 포인트 */
         :root {
             --bg-gradient: linear-gradient(135deg, #F8EDEF 0%, #EFE1E4 100%);
             
-            /* 한층 더 리얼해진 유리 질감 반투명 배경 */
-            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.15) 100%);
+            /* 💎 더 맑고 투명한 유리 질감 */
+            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 100%);
             --card-border-top: rgba(255, 255, 255, 0.9);
             --card-border-left: rgba(255, 255, 255, 0.6);
-            /* 외부 그림자와 내부 빛 반사 효과 추가 */
-            --shadow: 0 30px 50px rgba(170, 130, 140, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            
+            /* 💎 빛 반사와 깊은 그림자로 리얼리티 극대화 */
+            --shadow: 
+                0 40px 80px rgba(170, 130, 140, 0.35), 
+                inset 0 2px 8px rgba(255, 255, 255, 0.6), 
+                inset 0 -2px 10px rgba(255, 255, 255, 0.1);
             
             --text-main: #4A3B3C; 
             --text-sub: #9E8489; 
             
-            /* 포인트 컬러: 딥 로즈 */
             --accent-color: #B85C6A; 
             --accent-light: #D6949E;
             
@@ -32,13 +35,15 @@
             --font-sans: 'Poppins', sans-serif; 
         }
 
-        /* 스페셜 데이 무드: 다크 로즈 */
+        /* 🍷 스페셜 데이 무드: 다크 로즈 */
         body.special-day {
             --bg-gradient: linear-gradient(135deg, #2A1C1F 0%, #1A1214 100%);
-            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-            --card-border-top: rgba(255, 255, 255, 0.2);
-            --card-border-left: rgba(255, 255, 255, 0.1);
-            --shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+            --card-border-top: rgba(255, 255, 255, 0.25);
+            --card-border-left: rgba(255, 255, 255, 0.15);
+            --shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6), 
+                inset 0 2px 8px rgba(255, 255, 255, 0.1);
             
             --text-main: #FDF5F5; 
             --text-sub: #B5959A;
@@ -61,19 +66,19 @@
             transition: background 1.5s ease-in-out, color 1.5s ease-in-out; 
         }
 
-        /* 반응형 유리 질감 카드 */
+        /* ✨ 한층 더 유리같은 카드 디자인 */
         .card {
             width: 88%;
             max-width: 340px;
             box-sizing: border-box;
             background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(40px); /* 블러를 극대화하여 영롱하게 */
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-top: 1px solid var(--card-border-top);
             border-left: 1px solid var(--card-border-left);
             border-radius: 35px;
-            padding: 55px 30px;
+            padding: 60px 30px;
             text-align: center;
             box-shadow: var(--shadow);
             opacity: 0;
@@ -103,13 +108,11 @@
             color: var(--text-sub);
         }
 
-        /* 포인트 하트 이모지 */
         .heart-icon {
             color: var(--accent-light);
             font-size: 0.8rem;
         }
 
-        /* 포인트 컬러가 적용된 D-Day 숫자 */
         .d-day-number {
             font-family: var(--font-serif);
             font-weight: 400;
@@ -118,10 +121,9 @@
             margin: 0;
             letter-spacing: -0.02em;
             color: var(--accent-color);
-            transition: font-size 0.3s ease;
         }
 
-        /* 사귄 날짜 간격 늘림 */
+        /* 띄어쓰기 및 마진 조절 완료 */
         .since-date {
             font-family: var(--font-sans);
             font-weight: 300;
@@ -129,11 +131,10 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--text-sub);
-            margin-top: 18px; /* 디데이 숫자와의 간격 추가 */
+            margin-top: 35px; /* 줄바꿈 효과를 위해 간격 넉넉히 확보 */
             margin-bottom: 40px;
         }
 
-        /* 고급스러운 장식 기호 (구분선 대체) */
         .separator {
             font-size: 1.2rem;
             color: var(--accent-color);
@@ -141,44 +142,45 @@
             opacity: 0.7;
         }
 
-        /* 🎵 가사 텍스트 (줄바꿈 및 양쪽 밸런스 보정) */
+        /* 🎵 의미에 맞게 줄바꿈된 가사 박스 */
         .message-box {
             font-family: var(--font-serif);
             font-style: italic;
             font-weight: 400;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7; /* 줄간격을 넓혀 더 우아하게 */
             margin: 0 auto 45px;
             width: 100%;
-            max-width: 250px; /* 글씨가 옆으로 너무 퍼지지 않게 제한 */
-            text-wrap: balance; /* 글씨를 중앙 기준으로 예쁘게 줄바꿈하는 마법의 CSS */
-            word-break: keep-all; 
+            max-width: 270px; 
             transition: font-size 0.3s ease;
         }
 
-        /* 새로운 가시성 최적화 다음 기념일 박스 */
+        /* 🗓️ 유리 캡슐 느낌을 더 살린 기념일 박스 */
         .upcoming-container {
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.7);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+            padding: 20px 22px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             text-align: left;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            transition: all 1.5s ease;
+            box-shadow: 0 10px 25px rgba(170, 130, 140, 0.1);
         }
 
         body.special-day .upcoming-container {
             background: rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .up-label {
             font-family: var(--font-sans);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             color: var(--text-sub);
             text-transform: uppercase;
@@ -194,34 +196,35 @@
             font-family: var(--font-sans);
             font-weight: 500;
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         .up-dday {
             font-family: var(--font-sans);
             background: var(--accent-color);
             color: #FFF;
-            padding: 4px 12px;
-            border-radius: 14px;
+            padding: 5px 14px;
+            border-radius: 16px;
             font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.05em;
+            box-shadow: 0 4px 10px rgba(184, 92, 106, 0.3); /* 버튼에도 살짝 빛이 나게 */
         }
 
         .up-date {
             font-family: var(--font-sans);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-sub);
             font-weight: 300;
         }
 
-        /* 반응형 최적화 */
         @media (max-width: 480px) {
-            .card { width: 85%; padding: 45px 25px; }
+            .card { width: 85%; padding: 50px 25px; }
             .d-day-number { font-size: 6.5rem; }
+            .since-date { margin-top: 25px; margin-bottom: 35px; }
             .message-box { font-size: 1.15rem; margin-bottom: 35px; }
-            .up-name { font-size: 0.95rem; }
-            .up-dday { font-size: 0.7rem; padding: 4px 10px; }
+            .up-name { font-size: 1rem; }
+            .up-dday { font-size: 0.7rem; padding: 4px 12px; }
         }
 
         @media (max-width: 360px) {
@@ -240,10 +243,12 @@
         </div>
         
         <div class="d-day-number" id="days-count">0</div>
+        <!-- 줄바꿈 및 마진 조절 완료 -->
         <div class="since-date">since 26.06.14</div>
         
         <div class="separator">❦</div>
 
+        <!-- HTML 삽입을 위해 innerHTML을 사용할 영역 -->
         <div class="message-box" id="daily-message"></div>
 
         <div id="upcoming-event"></div>
@@ -308,9 +313,10 @@
             let eventMonth = String(futureEvent.date.getMonth() + 1).padStart(2, '0');
             let eventDay = String(futureEvent.date.getDate()).padStart(2, '0');
             
+            // NEXT ANNIVERSARY 문구 반영
             document.getElementById("upcoming-event").innerHTML = `
                 <div class="upcoming-container">
-                    <div class="up-label">Next Event</div>
+                    <div class="up-label">NEXT ANNIVERSARY</div>
                     <div class="up-main">
                         <span class="up-name">${futureEvent.name}</span>
                         <span class="up-dday">D-${diffDays}</span>
@@ -320,112 +326,113 @@
             `;
         }
 
-        // 3. 100 Pop Song Lyrics
+        // 3. 의미를 고려하여 <br>이 포함된 노래 가사 배열
         const lyrics = [
-            "You are the best thing, that's ever been mine.",
-            "Can I go where you go? Can we always be this close?",
-            "I've loved you for a thousand years.",
-            "You're my golden hour, the color of my sky.",
-            "I'd spend ten thousand hours and ten thousand more.",
-            "You are the only exception.",
-            "All of me loves all of you.",
-            "How long will I love you? As long as stars are above you.",
-            "Everything means nothing if I ain't got you.",
-            "I found a love for me.",
-            "Just let me adore you like it's the only thing I'll ever do.",
-            "I like me better when I'm with you.",
-            "You're the one that I want at the end of the day.",
-            "I'm in love with you and all these little things.",
-            "Look at the stars, look how they shine for you.",
-            "I'm so into you, I can barely breathe.",
-            "I don't wanna look at anything else now that I saw you.",
-            "You're amazing, just the way you are.",
-            "I'm lucky I'm in love with my best friend.",
-            "I fall in love with you every single day.",
-            "You're a sky full of stars.",
-            "I'll never finish falling in love with you.",
-            "Loving you is easy.",
-            "You're the coffee that I need in the morning.",
-            "I'd rather be nothing without you than something with somebody else.",
-            "My heart's been borrowed and yours has been blue.",
-            "You bring me out of the dark.",
-            "You're the only thing I know like the back of my hand.",
-            "I cross my heart and promise to give all I've got to give.",
-            "I will always love you.",
-            "If I ain't got you, I got nothing.",
-            "I just wanna see how beautiful you are.",
-            "There's nothing that I wouldn't do to make you feel my love.",
-            "Your love is a wild blue yonder.",
-            "I wanna love you in every kind of way.",
-            "I knew I loved you before I met you.",
-            "You're my end and my beginning.",
-            "I'd give you all of me.",
-            "Even when I lose I'm winning with you.",
-            "You are the reason I am still hanging on.",
-            "I am thinking of you in my sleepless solitude tonight.",
-            "You're still the one that I love.",
-            "I could hold you for a million years.",
-            "We found love right where we are.",
-            "Nothing could ever change this love I have for you.",
-            "You make me feel like a teenager in love.",
-            "I never thought that I'd find a love so true.",
-            "You are my sunrise on the darkest day.",
-            "I want to stay with you until we're grey and old.",
-            "Say you won't let go.",
-            "You're my water when I'm stuck in the desert.",
-            "I love you more than words can say.",
-            "Take my hand, take my whole life too.",
-            "I can't help falling in love with you.",
-            "Home is wherever I'm with you.",
-            "I don't need the world, I just need you.",
-            "You are the only one my heart belongs to.",
-            "You are the light that's leading me to the place.",
-            "Every little thing you do is magic.",
-            "I wanna be the one you call.",
-            "I'd walk through fire for you.",
-            "You got my heart, don't know how you did it.",
-            "I love you perfectly, you make me whole.",
-            "We're just falling in love all over again.",
-            "You're my favorite song I wanna sing forever.",
-            "When you smile, the whole world stops and stares for a while.",
-            "I see my whole future in your eyes.",
-            "I want you, all of you, forever.",
-            "I love the way you love me.",
-            "I will love you till the end of time.",
-            "You're the only thing that's making sense.",
-            "I wanna be with you everywhere.",
-            "You make my heart skip a beat.",
-            "You are the best thing I never knew I needed.",
-            "You're my sunshine in the rain.",
-            "I just want to be yours.",
-            "I wanna be yours.",
-            "I belong with you, you belong with me.",
-            "You're my sweetheart.",
-            "You make it better, just by being here.",
-            "You're everything I ever wanted.",
-            "I fall for you more and more every day.",
-            "You're the answer to every prayer I've offered.",
-            "I have and I always will love you.",
-            "I'll be loving you forever.",
-            "You are my always and forever.",
-            "With you, I'm comfortable.",
-            "I love you unconditionally.",
-            "You're my dream come true.",
-            "You're the piece of me that makes me whole.",
-            "I just called to say I love you.",
-            "I want to hold your hand.",
-            "I love you like a love song, baby.",
-            "There's no one else I'd rather be with.",
-            "You've got the love I need to see me through.",
-            "You are the apple of my eye.",
-            "I'll love you till the sky falls down.",
-            "I could die a happy man with you.",
-            "You're the reason I believe in love.",
-            "It's always been you."
+            "You are the best thing,<br>that's ever been mine.",
+            "Can I go where you go?<br>Can we always be this close?",
+            "I've loved you<br>for a thousand years.",
+            "You're my golden hour,<br>the color of my sky.",
+            "I'd spend ten thousand hours<br>and ten thousand more.",
+            "You are<br>the only exception.",
+            "Cause all of me<br>loves all of you.",
+            "How long will I love you?<br>As long as stars are above you.",
+            "Everything means nothing<br>if I ain't got you.",
+            "I found a love<br>for me.",
+            "Just let me adore you<br>like it's the only thing I'll ever do.",
+            "I like me better<br>when I'm with you.",
+            "You're the one that I want<br>at the end of the day.",
+            "I'm in love with you<br>and all these little things.",
+            "Look at the stars,<br>look how they shine for you.",
+            "I'm so into you,<br>I can barely breathe.",
+            "I don't wanna look at anything else<br>now that I saw you.",
+            "You're amazing,<br>just the way you are.",
+            "I'm lucky I'm in love<br>with my best friend.",
+            "I fall in love with you<br>every single day.",
+            "Cause you're a sky,<br>cause you're a sky full of stars.",
+            "I'll never finish<br>falling in love with you.",
+            "Loving you<br>is easy.",
+            "You're the coffee<br>that I need in the morning.",
+            "I'd rather be nothing without you<br>than something with somebody else.",
+            "My heart's been borrowed<br>and yours has been blue.",
+            "You bring me<br>out of the dark.",
+            "You're the only thing I know<br>like the back of my hand.",
+            "I cross my heart and promise<br>to give all I've got to give.",
+            "And I will always<br>love you.",
+            "If I ain't got you,<br>I got nothing.",
+            "I just wanna see<br>how beautiful you are.",
+            "There's nothing that I wouldn't do<br>to make you feel my love.",
+            "Your love is<br>a wild blue yonder.",
+            "I wanna love you<br>in every kind of way.",
+            "I knew I loved you<br>before I met you.",
+            "You're my end<br>and my beginning.",
+            "I'd give you<br>all of me.",
+            "Even when I lose<br>I'm winning with you.",
+            "You are the reason<br>I am still hanging on.",
+            "I am thinking of you<br>in my sleepless solitude tonight.",
+            "You're still the one<br>that I love.",
+            "I could hold you<br>for a million years.",
+            "We found love<br>right where we are.",
+            "Nothing could ever change<br>this love I have for you.",
+            "You make me feel<br>like a teenager in love.",
+            "I never thought that I'd find<br>a love so true.",
+            "You are my sunrise<br>on the darkest day.",
+            "I want to stay with you<br>until we're grey and old.",
+            "Just say you<br>won't let go.",
+            "You're my water<br>when I'm stuck in the desert.",
+            "I love you more<br>than words can say.",
+            "Take my hand,<br>take my whole life too.",
+            "I can't help<br>falling in love with you.",
+            "Home is wherever<br>I'm with you.",
+            "I don't need the world,<br>I just need you.",
+            "You are the only one<br>my heart belongs to.",
+            "You are the light<br>that's leading me to the place.",
+            "Every little thing you do<br>is magic.",
+            "I wanna be<br>the one you call.",
+            "I'd walk through fire<br>for you.",
+            "You got my heart,<br>don't know how you did it.",
+            "I love you perfectly,<br>you make me whole.",
+            "We're just falling in love<br>all over again.",
+            "You're my favorite song<br>I wanna sing forever.",
+            "When you smile,<br>the whole world stops and stares.",
+            "I see my whole future<br>in your eyes.",
+            "I want you,<br>all of you, forever.",
+            "I love the way<br>you love me.",
+            "I will love you<br>till the end of time.",
+            "You're the only thing<br>that's making sense.",
+            "I wanna be with you<br>everywhere.",
+            "You make my heart<br>skip a beat.",
+            "You are the best thing<br>I never knew I needed.",
+            "You're my sunshine<br>in the rain.",
+            "I just want<br>to be yours.",
+            "I wanna be<br>yours.",
+            "I belong with you,<br>you belong with me.",
+            "You're my<br>sweetheart.",
+            "You make it better,<br>just by being here.",
+            "You're everything<br>I ever wanted.",
+            "I fall for you more and more<br>every day.",
+            "You're the answer<br>to every prayer I've offered.",
+            "I have and I always<br>will love you.",
+            "I'll be loving you<br>forever.",
+            "You are my always<br>and forever.",
+            "With you,<br>I'm comfortable.",
+            "I love you<br>unconditionally.",
+            "You're my dream<br>come true.",
+            "You're the piece of me<br>that makes me whole.",
+            "I just called<br>to say I love you.",
+            "I want to<br>hold your hand.",
+            "I love you<br>like a love song, baby.",
+            "There's no one else<br>I'd rather be with.",
+            "You've got the love I need<br>to see me through.",
+            "You are the apple<br>of my eye.",
+            "I'll love you<br>till the sky falls down.",
+            "I could die a happy man<br>with you.",
+            "You're the reason<br>I believe in love.",
+            "It's always<br>been you."
         ];
 
+        // 의미상 끊긴 줄바꿈이 반영되도록 innerHTML 사용
         const dayIndex = daysDiff % lyrics.length;
-        document.getElementById("daily-message").innerText = `"${lyrics[dayIndex]}"`;
+        document.getElementById("daily-message").innerHTML = `"${lyrics[dayIndex]}"`;
     </script>
 
 </body>
